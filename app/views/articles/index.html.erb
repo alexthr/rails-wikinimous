@@ -1,0 +1,27 @@
+<div class="header">
+  <%= image_tag("https://upload.wikimedia.org/wikipedia/en/thumb/8/80/Wikipedia-logo-v2.svg/1122px-Wikipedia-logo-v2.svg.png") %>
+  <%= link_to new_article_path do%>
+  <div class="new-btn">
+    <i class="fas fa-plus no-decoration" style=""></i>
+    <span class="btn-text no-decoration">New Article</span>
+  </div>
+  <% end %>
+</div>
+
+<% @articles.each do |article| %>
+  <div class="article">
+    <div class="article-head">
+      <%= link_to article.title, article_path(article) %>
+      <div class="article-icons">
+        <%= link_to "", edit_article_path(article), class: "fas fa-edit" %>
+        <%= link_to "", article_path(article), method: :delete, class: "fas fa-trash-alt" %>
+      </div>
+    </div>
+    <div class="article-content">
+      <p><%= article.content.chars[0..250].join + "..." %></p>
+    </div>
+  </div>
+<% end %>
+
+
+
